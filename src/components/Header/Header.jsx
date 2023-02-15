@@ -39,8 +39,6 @@ const Header = () => {
         }
     }, [theme]);
 
-    console.log(context)
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const content = e.target.elements['word-input'].value;
