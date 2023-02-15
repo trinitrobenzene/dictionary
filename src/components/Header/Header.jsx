@@ -14,9 +14,7 @@ const Header = () => {
         if (e.code === 'Enter') {
             if (e.target.value.length) {
                 context.setKeyword(e.target.value.trim());
-                e.target.value = '';
-            } 
-            else {
+            } else {
                 context.setWord(null);
                 context.setKeyword('');
             }
@@ -40,6 +38,14 @@ const Header = () => {
                 break;
         }
     }, [theme]);
+
+    console.log(context)
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const content = e.target.elements['word-input'].value;
+        if (content.length) context.setKeyword(content)
+    }
 
     return (
         <header className="relative">
@@ -67,17 +73,24 @@ const Header = () => {
                 </span>
             </div>
             <div>
-                <label
-                    htmlFor="word-input"
-                    className="block mb-2 text-sm font-medium"
-                >
-                    Search a word
-                </label>
-                <input
-                    onKeyUp={handleSetWord}
-                    id="word-input"
-                    className="text-input"
-                />
+                <form onSubmit={handleSubmit}>
+                    <label
+                        htmlFor="word-input"
+                        className="block mb-2 text-sm font-medium"
+                    >
+                        Search a word
+                    </label>
+                    <div className='text-box'>
+                        <input
+                            onKeyUp={handleSetWord}
+                            id="word-input"
+                            className="text-input"
+                        />
+                        <button type='submit' id='word-submit'>
+                            <ion-icon name="search-outline"  style={{fontSize:20}}></ion-icon>
+                        </button>
+                    </div>
+                </form>
             </div>
         </header>
     );

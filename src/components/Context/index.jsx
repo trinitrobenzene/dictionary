@@ -5,9 +5,7 @@ export const WordContext = createContext();
 const WordProvider = ({ children }) => {
     const [keyword, setKeyword] = useState('');
     const [word, setWord] = useState(null);
-    const [theme, setTheme] = useState(
-        localStorage.getItem('theme') ?? 'light'
-    );
+    const [theme, setTheme] = useState( localStorage.getItem('theme') ?? 'light' );
 
     const value = {
         keyword,
